@@ -5,11 +5,43 @@
     <title>What's Up with Testing</title>
     <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
     <style>
-        .todo, .highlight_me {background-color: yellow;}
+        #left_hand {width: 225px; float: left; position: fixed; background-color: silver;}
+        #left_hand a {display: block; padding-bottom: 10px;}
+
+        #main_content {margin: 0 0 0 230px;}
+        .todo, highlight_me {background-color: yellow;}
         li {margin: 5px 5px 5px 5px;}
+        #main_content nav a {padding-right: 20px;}
+
     </style>
 </head>
 <body>
+
+<div id="left_hand">
+
+<p>Tutorial</p>
+    <nav>
+    <a href="index.html">Overview</a>   
+    <a href="Need.html">What You'll Need</a>
+    <a href="WhichAndHowMany.html">Which Tests to Write</a>
+    <a href="Writing.html">Writing Tests</a>
+    <a href="ExampleTest_Auto.html">-- JavaScript example</a>
+    <a href="ExampleTest_RefTest.html">-- RefTest example</a>
+    <a href="ExampleTest_Manual.html">-- Manual example</a>
+    <a href="Submitting.html">Submitting Tests</a>
+    <a href="ThenWhat.html">Then What?  Test Review Process</a>
+    </nav>
+<hr>
+<p>Test Templates</p>
+    <a href="templates/template-auto.html" target="_blank">JavaScript test</a>
+    <a href="templates/template-reftest-001.html" target="_blank">RefTest, part one</a>
+    <a href="templates/template-reftest-001-ref.html" target="_blank">RefTest, part two</a>
+    <a href="templates/template-MANUAL.html" target="_blank">Manual test</a>
+
+</div>
+
+<div id="main_content">
+
     <h1>Example Test: RefTest</h1>
 
     <h2>A RefTest</h2>
@@ -114,8 +146,9 @@
         <h2>What About a <a href="ExampleTest_Manual.html">Manual Test</a>?</h2>   
 
     <nav>
-        <a href="index.html">Back to Main</a>
+        <a href="index.html">Back to Overview</a>
         <a href="ExampleTest_Manual.html">Example Manual Test</a>
     </nav>
+</div>
 </body>
 </html>

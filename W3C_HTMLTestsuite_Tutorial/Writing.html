@@ -5,17 +5,48 @@
     <title>What's Up with Testing</title>
     <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
     <style>
-        .todo {background-color: yellow;}
+        #left_hand {width: 225px; float: left; position: fixed; background-color: silver;}
+        #left_hand a {display: block; padding-bottom: 10px;}
+
+        #main_content {margin: 0 0 0 230px;}
+        .todo, highlight_me {background-color: yellow;}
         li {margin: 5px 5px 5px 5px;}
         table{ border: 1px solid black; table-layout: fixed;}
-        td { border: 1px solid black; overflow: hidden;}
+        td { border: 1px solid black; overflow: hidden; vertical-align: text-top;}
+        #main_content nav a {padding-right: 20px;}
+
     </style>
 </head>
 <body>
 
+<div id="left_hand">
+
+<p>Tutorial</p>
+    <nav>
+    <a href="index.html">Overview</a>   
+    <a href="Need.html">What You'll Need</a>
+    <a href="WhichAndHowMany.html">Which Tests to Write</a>
+    <a href="Writing.html">Writing Tests</a>
+    <a href="ExampleTest_Auto.html">-- JavaScript example</a>
+    <a href="ExampleTest_RefTest.html">-- RefTest example</a>
+    <a href="ExampleTest_Manual.html">-- Manual example</a>
+    <a href="Submitting.html">Submitting Tests</a>
+    <a href="ThenWhat.html">Then What?  Test Review Process</a>
+    </nav>
+<hr>
+<p>Test Templates</p>
+    <a href="templates/template-auto.html" target="_blank">JavaScript test</a>
+    <a href="templates/template-reftest-001.html" target="_blank">RefTest, part one</a>
+    <a href="templates/template-reftest-001-ref.html" target="_blank">RefTest, part two</a>
+    <a href="templates/template-MANUAL.html" target="_blank">Manual test</a>
+
+</div>
+
+<div id="main_content">
+
     <h1>Writing Tests</h1>
 
-    <p>There are three approaches to writing a test.  The following links provide <a href="templates/" target="_blank">templates</a> for each approach.</p>
+    <p>There are three approaches to writing a test.  The following links provide <a href="templates/index.html" target="_blank">templates</a> for each approach.</p>
 
     <ul>
         <li>The best approach is to create <b>fully automated <a href="templates/template-auto.html" target="_blank">JavaScript tests</a></b> to verify each assertion.  These rely upon the <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js" target="_blank">testharness.js</a></kbd> capabilities.</li>
@@ -84,9 +115,10 @@
     <h2>Let's Go Through <a href="ExampleTest_Auto.html">Some Examples</a>...</h2>
 
     <nav>
-        <a href="index.html">Back to Main</a>
+        <a href="index.html">Back to Overview</a>
         <a href="ExampleTest_Auto.html">Example Tests</a>
     </nav> 
 
+</div>
 </body>
 </html>
