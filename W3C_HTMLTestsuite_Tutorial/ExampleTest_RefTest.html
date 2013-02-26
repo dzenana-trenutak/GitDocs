@@ -28,13 +28,15 @@
 
     <p>Then, if the two pages render identically within a reftest testing harness, the test is marked as "pass".</p>
 
-    <p>More complicated reftests are possible as well, such as when multiple pages need all to match each other, or when a page can match any of a number or alternatives. or when two pages should definitely NOT match.  The CSS Working Group has great experience with all the nuances of reftests, and I will leave the explanation of those more complicated reftests to <a href="http://wiki.csswg.org/test/format#reference-links" target="_blank">them</a>.</p>
+    <p>More complicated reftests are possible as well, such as when multiple pages need all to match each other, or when a page can match any of a number or alternatives. or when two pages should definitely NOT match.  W3C's CSS Working Group has great experience with all the nuances of reftests, and I will leave the explanation of those more complicated reftests to <a href="http://wiki.csswg.org/test/format#reference-links" target="_blank">them</a>.</p>
 
     <p>Here, we will demonstrate a simple example.  Let's take the first question from the list above: Does a right-to-left rendering of "SAW" within a <code>BDO</code> element really display as "WAS"?</p>
 
+    <p>Remember, you can get the needed templates for this kind of test <a href="templates/template-reftest-001.html" target="_blank">here</a> and <a href="templates/template-reftest-001-ref.html" target="_blank">here</a>. When you name the file, just add the section information ahead of the "reftest" string in the filename.  Increment the 001 number as needed, depending on how many reftests you need to make to test this particular piece of the technology.</p>
+
     <h3>The Test File</h3>
 
-    <p>The Test File contains a lot of metadata about the test.  It also uses markup to explain the test to a potential human reader, in case the reftest is being run manually as a stand-alone file rather than through a automated screenshot comparison against its reference file.  Then, it creates an example of the technology being tested.</p>
+    <p>The Test File contains a lot of metadata about the test.  It also uses markup to explain the test to a potential human reader, in case the reftest is being run manually as a stand-alone file rather than through a automated screenshot comparison against its reference file.  Then, it creates an example of the technology being tested (in the following example, that particular part is highlighted in yellow).</p>
 
 <pre>
 
@@ -73,7 +75,7 @@
         <li>The "assert" metadata is taken out.</li>
         <li>The "match" (or "mismatch") metadata is optional (and changed to refer back to the test file).</li>
         <li>All the introductory text needs to be the same, so as not to throw off the automated screenshot comparison.</li>
-        <li>However, the markup that created the actual test data is different: this time, the same effect needs to be created with very mundane, dependable technology.</li>
+        <li>However, the markup that created the actual test data is different: this time, the same effect needs to be created with very mundane, dependable technology.  As above, this part is highlighted in yellow.</li>
     </ul>
 
 <pre>

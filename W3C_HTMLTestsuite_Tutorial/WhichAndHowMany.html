@@ -136,12 +136,10 @@
 
         <h2>For each section</h2>
         
-        <ol>
-	    <li>
-            <p>Save a copy of <a href="template-auto.html" target="_blank">this testing template</a> using the naming convention <b>"sectionParent"-"section"</b>. For example, <kbd>DND-DataTransfer.html</kbd>.</p>
-            <p>Read through the spec text to gather every assertion needs testing. We are looking for every assertion that targets <strong>user agents</strong> (aka consumers) – <strong>not authors</strong> (aka producers).</p>
-            <p>Note every assertion as a comment within the template's script element.)</p>
-        </li>
+        <p>Save a copy of <a href="templates/template-auto.html" target="_blank">this testing template</a> using the naming convention <b>"sectionParent"-"section"</b>. For example, <kbd>DND-DataTransfer.html</kbd>.</p>
+        <p>Read through the spec text to gather every assertion needs testing. We are looking for every assertion that targets <strong>user agents</strong> (aka consumers) – <strong>not authors</strong> (aka producers).</p>
+        <p>Note every assertion as a comment within the template's script element. The following table will help you identify which assertions to document using such comments.</p>
+
         <table>
             <tr>
                 <th>Direction</th>
@@ -334,6 +332,7 @@
                 <td>
                     <p>Note every normative statement that targets <strong>user agents</strong> (aka consumers) – <strong>not authors</strong> (aka producers).</p>
                     <p>Normative statements include the words "must", "must not", "required", "should", "should not", and "recommended." (RFC 2119 language)</p>
+                    <p>Here, each normative statement has been highlighted.</p>
                 </td>
 <td>
 
@@ -368,11 +367,12 @@
         	<tr>
                 <td>
                     <p>There are also other statements within the spec that do not use the RFC 2119 language but might still need to be tested.</p>
-                    <p>These are called "candidate requirements."
-                    <p>Determining whether or not it should be tested is something that requires reading other parts of the spec.</p>
+                    <p>These are called "candidate requirements." This example highlights such a candidate requirement in yellow.</p>
+                    <p>Determining whether or not this candidate requirement should also be tested is something that requires reading other parts of the spec.</p>
                     <p>For this particular example, no test is necessary for the statement above, because the actual requirement for setting the value of <code>dropEffect</code> when the <code>DataTransfer</code> object is created is defined in another part of the spec.</p>
                     <p>On the other hand, if it is a simple enough test to write, you should perhaps go ahead and include it here anyway, to ensure that the technology is truly completely tested within your specific test suite.</p>
-                    <p>In sum: if the statement is an observation about your current test target that is fully contained within another section of a spec and does not particularly affect your tests, leave it to that spec section's tester to test the statement.  However, if the statement is something that your current tests rely upon being correctly implemented as their own basis, strongly consider writing the tests within your test suite, even if they may be duplicated elsewhere.</p>  
+                    <p>Basically, if the statement is an observation about your current test target that is fully contained within another section of a spec and does not particularly affect your tests, leave it to that spec section's tester to test the statement.</p>
+                    <p>However, if the statement is something that your current tests rely upon being correctly implemented as their own basis, strongly consider writing the tests within your test suite, even if they may be duplicated elsewhere.</p>  
                 </td>
 <td>
     <p>A <code><a href="#datatransfer">DataTransfer</a></code> object is associated with a <a href="#drag-data-store">drag data store</a> while it is valid.</p>
@@ -393,9 +393,9 @@
                     <p>This part of the spec does not use much RFC 2119 language, but it is full of testable statements.</p>
                     <p>Note that
                         <ul>
-                            <li>Normative statements aimed at <strong>authors</strong> have been crossed out.</li>
-                            <li>Normative statements aimed at user agents are highlighted <b>and in bold</b>.</li>
-                            <li>Candidate requirements for user agents are merely highlighted.</li>
+                            <li>Crossed out text indicates a normative statement aimed at <strong>authors</strong>.</li>
+                            <li>Highlighted and bold text indicates a normative statement aimed at <strong>user agents</strong>.</li>
+                            <li>Highlighted text alone indicates a candidate requirement for user agents.</li>
                         </ul>
                     </p>
                     <p>Also note that some of these statements will require digging further into the spec to catch all the necessary tests you should write:
@@ -478,8 +478,8 @@
             <tr>
                 <td>As for algorithms:
                     <p>Requirements are often stated within algorithms.</p>
-                    <p>Some algorithms in a spec may contain many individual statements or steps that don’t use each use RFC 2119 but that nonetheless state conformance requirements.</p>
-                    <p>Such algorithms are typically prefaced by a statement that does use RFC 2119 language, and the algorithm step that requires conformance testing is often written using an imperative statement.</p>
+                    <p>Some algorithms in a spec may contain many individual statements or steps that don’t use each use RFC 2119 language but that nonetheless state conformance requirements.</p>
+                    <p>Such algorithms are typically prefaced by a statement that does use RFC 2119 language, and the algorithm step that requires conformance testing is often written using an imperative statement.  Such statements have been highlighted here.</p>
                     <p>Again, a lot of digging around in other parts of the spec will be necessary when writing these tests - you will need to know all about "drag data store"s and how formally to convert a value to ASCII lowercase.</p>
                     </td>
                 
@@ -509,8 +509,10 @@
             </td>
             </tr>
         </table>
-        </li>
-        <li>Your template test file is now full of comments documenting every assertion you need to test.  Before you start actually coding, though:</li>
+
+
+        <p>Your template test file is now full of comments documenting every assertion you need to test.  Before you start actually coding, though:</p>
+        <ol>
         <li>Double-check that each assertion you have noted has not been dropped from the Nightly version of the spec.  If an assertion has been dropped in the Nightly version, don't write a test for it -- just include a comment within your future test file that references the assertion and the fact that it was dropped from the Nightly version.
             <ul>
                 <li><a href="http://www.w3.org/html/wg/drafts/html/master/" target="_blank">HTML 5.1, Nightly</a></li>
@@ -518,18 +520,18 @@
                 <li><a href="" target="_blank">HTML Microdata, Nightly - DOES NOT EXIST</a></li>
             </ul>
         </li>
-        <li>Lastly, make sure that you'll get notified of future Nightly spec changes that might impact your particular tests by <a href="https://help.github.com/articles/watching-repositories" target="_blank">watching</a> the Nightly spec on GitHub.
+        <li>Make sure that you'll get notified of future Nightly spec changes that might impact your particular tests by <a href="https://help.github.com/articles/watching-repositories" target="_blank">watching</a> the Nightly spec on GitHub.
             <ul>
                 <li>Source of both <a href="https://github.com/w3c/html" target="_blank">Nightly HTML 5 <em>and</em> Canvas 2D Context</a> Specs</li>
                 <li>Source of <a href="" target="_blank">Nightly HTML Microdata</a> - DOES NOT EXIST</li>
             </ul>
         </li>              
 
-        <li>Every note you made during this review will require <strong>at least</strong> one test to verify that the statement is true.  (More on that topic in the <a href="Writing.html">Writing Tests</a> section.)</li>
+        <li>Know that every note you made during this review will require <strong>at least</strong> one test to verify that the statement is true.  (More on that topic in the <a href="Writing.html">Writing Tests</a> section.)</li>
 
         <li>But then, stop! No other tests are required!  Focus only on verifying that the specific assertions made in this particular spec are true. Do not add any tests that test for absence of any additional features (for example, do not test that an element has only X number of attributes as listed in the spec), as other specs, partial interfaces, and newer versions of the very same technology may also add features not listed in this particular spec.</li>
 
-</ol>
+        </ol>
 
 <nav>
     <a href="index.html">Back to Main</a>

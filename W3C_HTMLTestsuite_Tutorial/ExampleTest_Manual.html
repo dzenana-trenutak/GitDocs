@@ -31,7 +31,9 @@
     <p>Even though a human is needed to run the test and possibly also to decide the test result, the result can at least be gathered into the usual <code>testharness</code> mechanism for reporting.</p>
     <p>We can do this by using the <a href="http://darobin.github.com/test-harness-tutorial/docs/using-testharness.html#section-32" target="_blank">asynchronous test</a> capabilities given to us by the <code>testharness.js</code> JavaScript files.</p>
 
-    <p>For example, let's say we want to test the <code>onresize</code> IDL event handler on the <code>body</code> element. Sadly, we need a human to cause the print event. However, once the human does that (and signals to the testharness that the event has indeed happened), the testharness can determine the success of the test.</p>
+    <p>For example, let's say we want to test the <code>onresize</code> IDL event handler on the <code>body</code> element. Sadly for the testsuite, we can only count on a human to be able to resize the window. However, once the human does that (and signals to the testharness that the event has indeed happened), the testharness can determine the success of the test.</p>
+
+    <p>Remember, you can get a template for this kind of test <a href="templates/template-MANUAL.html" target="_blank">here</a>. This time, when you name the file, keep "MANUAL" at the end of the filename.</p>
 
 <pre>
 
@@ -172,9 +174,7 @@
 
 </pre>
 
-    <p>In an ideal test suite in an ideal world, you would never need to use the techniques explained here regarding manual tests.</p>
-
-    <p>Still, better to know how to create a manual test when necessary than to leave any normative spec statement untested!</p>
+    <p>In an ideal test suite in an ideal world, you would never need to use the techniques explained here regarding manual tests. Still, better to know how to create a manual test when necessary than to leave any normative spec statement untested!</p>
 
         <a href="index.html">Back to Main</a>
         <a href="Submitting.html">Submitting Your Tests</a>
