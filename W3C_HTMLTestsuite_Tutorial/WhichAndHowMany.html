@@ -148,7 +148,6 @@
 
 <h1>Which Tests to Write (and How Many)</h1>
 
-
 <section id="navigation">
 
     <h4>Tutorial</h4>
@@ -412,14 +411,12 @@
     </ol>
     
 </td>
-            <td>
-                <ul>
-                    <li>Getting <code>DataTransferObject.dropEffect</code>, must return its current value.</li>
-                    <li>Setting <code>DataTransferObject.dropEffect</code> to "<code title="">none</code>", "<code title="">copy</code>", "<code title="">link</code>", or "<code title="">move</code>", must change the attribute's current value to the new value.</li>
-                    <li>Setting <code>DataTransferObject.dropEffect</code> to any other value than "<code title="">none</code>", "<code title="">copy</code>", "<code title="">link</code>", or "<code title="">move</code>" must be ignored.</li>
-                    <li>(As for the <code>clearData</code> method, we will talk later about how to note step-by-step algorithms)</li>
-                </ul>
-            </td>
+                <td>
+                    <p>Getting <code>DataTransferObject.dropEffect</code>, must return its current value.</p>
+                    <p>Setting <code>DataTransferObject.dropEffect</code> to "<code title="">none</code>", "<code title="">copy</code>", "<code title="">link</code>", or "<code title="">move</code>", must change the attribute's current value to the new value.</p>
+                    <p>Setting <code>DataTransferObject.dropEffect</code> to any other value than "<code title="">none</code>", "<code title="">copy</code>", "<code title="">link</code>", or "<code title="">move</code>" must be ignored.</p>
+                    <p>(As for the <code>clearData</code> method, we will talk later about how to note step-by-step algorithms)</p>
+                </td>
             </tr>
         	<tr>
                 <td>
@@ -438,10 +435,8 @@
     <p>The <dfn id="dom-datatransfer-dropeffect" title="dom-DataTransfer-dropEffect"><code>dropEffect</code></dfn> attribute controls the drag-and-drop feedback that the user is given during a drag-and-drop operation. <span class="highlight_me">When the <code><a href="#datatransfer">DataTransfer</a></code> object is created, the <code title="dom-DataTransfer-dropEffect"><a href="#dom-datatransfer-dropeffect">dropEffect</a></code> attribute is set to a string value.</span> On getting, it must return its current value. On setting, if the new value is one of "<code title="">none</code>", "<code title="">copy</code>", "<code title="">link</code>", or "<code title="">move</code>", then the attribute's current value must be set to the new value. Other values must be ignored.</p>
 
 </td>
-            <td>Personally, this is such a quick test to write, I would include this verification here even if, technically, another part of the spec is supposed to cover it:
-                <ul>
-                    <li>The initial, default value of <code>DataTransferObject.dropEffect</code> is a string.</li>
-                </ul>
+            <td>This seems such a quick test to write, I would personally include this verification here even if, technically, another part of the spec is supposed to cover it:
+                <p>The initial, default value of <code>DataTransferObject.dropEffect</code> is a string.</p>
             </td>
 
             </tr>
@@ -514,22 +509,20 @@
 </td>
 
                 <td>
-                    <ul>
-                        <li>If the <code>reversed</code> attribute is present, it indicates that the list is a descending list (..., 3, 2, 1).</li>
-                        <li>If the <code>reversed</code> attribute is omitted, the list is an ascending list (1, 2, 3, ...).</li>
-                        <li>If the <code>start</code> attribute is present, user agents must parse it as an integer, in order to determine the attribute's value.</li>
-                        <li>If the element has no <code>reversed</code> attribute, the default value of the <code>start</code> attribute, used if the attribute is missing or if the value cannot be converted to a number according to the referenced algorithm, is 1.</li>
-                        <li>When the element has a <code>reversed</code> attribute, the default value of the <code>start</code> attribute, used if the attribute is missing or if the value cannot be converted to a number according to the referenced algorithm, is the number of child <code>li</code> elements.</li>
-                        <li>Assuming the first <code>li</code> child has no successfully-parsable value attribute, the first item in the list has the ordinal value given by the <code>ol</code> element's <code>start</code> attribute.</li>
-                        <li>If the first <code>li</code> child element has a <code>value</code> attribute with a value that can be successfully parsed, the first item in the list has the ordinal value given by that <code>li</code> element's <code>value</code> attribute.</li>
-                        <li>Each subsequent item in the list has the ordinal value given by its own <code>value</code> attribute, if it has one.</li>
-                        <li>If the <code>reversed</code> attribute is present on the list, then, for each subsequent item in the list that does not provide an ordinal value via its <code>value</code> attribute, that item's value is the ordinal value of the previous item minus one.</li>
-                        <li>If the <code>reversed</code> attribute is NOT present on the list, then, for each subsequent item in the list that does not provide an ordinal value via its <code>value</code> attribute, that item's value is the ordinal value of the previous item PLUS one.</li>
-                        <li>The <code>reversed</code> IDL attribute must reflect the <code>reversed</code> content attribute.</li>
-                        <li>The <code>start</code> IDL attribute must reflect the <code>start</code> content attribute.</li>
-                        <li>The <code>start</code> IDL attribute has the same default as the <code>start</code> content attribute.</li>
-                    </ul>
-</td>
+                    <p>If the <code>reversed</code> attribute is present, it indicates that the list is a descending list (..., 3, 2, 1).</p>
+                    <p>If the <code>reversed</code> attribute is omitted, the list is an ascending list (1, 2, 3, ...).</li>
+                    <p>If the <code>start</code> attribute is present, user agents must parse it as an integer, in order to determine the attribute's value.</p>
+                    <p>If the element has no <code>reversed</code> attribute, the default value of the <code>start</code> attribute, used if the attribute is missing or if the value cannot be converted to a number according to the referenced algorithm, is 1.</p>
+                    <p>When the element has a <code>reversed</code> attribute, the default value of the <code>start</code> attribute, used if the attribute is missing or if the value cannot be converted to a number according to the referenced algorithm, is the number of child <code>li</code> elements.</p>
+                    <p>Assuming the first <code>li</code> child has no successfully-parsable value attribute, the first item in the list has the ordinal value given by the <code>ol</code> element's <code>start</code> attribute.</p>
+                    <p>If the first <code>li</code> child element has a <code>value</code> attribute with a value that can be successfully parsed, the first item in the list has the ordinal value given by that <code>li</code> element's <code>value</code> attribute.</p>
+                    <p>Each subsequent item in the list has the ordinal value given by its own <code>value</code> attribute, if it has one.</p>
+                    <p>If the <code>reversed</code> attribute is present on the list, then, for each subsequent item in the list that does not provide an ordinal value via its <code>value</code> attribute, that item's value is the ordinal value of the previous item minus one.</p>
+                    <p>If the <code>reversed</code> attribute is NOT present on the list, then, for each subsequent item in the list that does not provide an ordinal value via its <code>value</code> attribute, that item's value is the ordinal value of the previous item PLUS one.</p>
+                     <p>The <code>reversed</code> IDL attribute must reflect the <code>reversed</code> content attribute.</p>
+                     <p>The <code>start</code> IDL attribute must reflect the <code>start</code> content attribute.</p>
+                     <p>The <code>start</code> IDL attribute has the same default as the <code>start</code> content attribute.</p>
+                </td>
 
             </tr>
             <tr>
@@ -557,12 +550,10 @@
 
 </td>
             <td>
-                <ul>
-                    <li>Nothing happens when <code>.clearData</code> is called on a <code>DataTransfer</code> object which is not associated with a drag data store</li>
-                    <li>Nothing happens when <code>.clearData</code> is called on a <code>DataTransfer</code> object when its drag data store has a <code>mode</code> other than "read/write mode"</li>
-                    <li>If <code>dataTransferObject.clearData</code> is called with no arguments, only remove all items in the drag data store's item list whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i>.</li>
-                    <li>If <code>dataTransferObject.clearData</code> is called with at least one argument, remove the item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind">kind</a> is <i>Plain Unicode string</i> and whose <a href="#the-drag-data-item-type-string">type string</a> is equal to <var title="">format</var> (as described in steps 4 and 5), if there is one.</li>
-                </ul>
+                <p>Nothing happens when <code>.clearData</code> is called on a <code>DataTransfer</code> object which is not associated with a drag data store</p>
+                <p>Nothing happens when <code>.clearData</code> is called on a <code>DataTransfer</code> object when its drag data store has a <code>mode</code> other than "read/write mode"</p>
+                <p>If <code>dataTransferObject.clearData</code> is called with no arguments, only remove all items in the drag data store's item list whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i>.</p>
+                <p>If <code>dataTransferObject.clearData</code> is called with at least one argument, remove the item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind">kind</a> is <i>Plain Unicode string</i> and whose <a href="#the-drag-data-item-type-string">type string</a> is equal to <var title="">format</var> (as described in steps 4 and 5), if there is one.</p>
             </td>
             </tr>
         </table>
