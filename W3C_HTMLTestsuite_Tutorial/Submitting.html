@@ -5,46 +5,67 @@
     <title>What's Up with Testing</title>
     <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
     <style>
-        #left_hand {width: 225px; float: left; position: fixed; background-color: silver;}
-        #left_hand a {display: block; padding-bottom: 10px;}
+        body {margin: 1em 1em 2em 16em; font-family: sans-serif; }
 
-        #main_content {margin: 0 0 0 230px;}
-        .todo, highlight_me {background-color: yellow;}
-        li {margin: 5px 5px 5px 5px;}
-        table{ border: 1px solid black; table-layout: fixed;}
-        td { border: 1px solid black; overflow: hidden; vertical-align: text-top;}
-        #main_content nav a {padding-right: 20px;}
+        #navigation { float: left; width: 13em; margin: 0 0 0 -15em; position: fixed; padding: 0.5em;
+                      background-color: #aaa; border-radius: 0.5em; }
+        #navigation ul { list-style-type: none; padding-left: 0.5em; }
+        #navigation ul ul li:before { content: "- "; }
 
+        #main { max-width: 60em; }
+        #main li { padding: .25em; }
+        #main nav { margin-top: 3em; text-align: center; }
+        #main nav a { padding-right: 3em; }
+
+        /* wide screen */
+        @media all and (min-width: 90em)
+        {
+          body {margin: 4em 4em 4em 20em; }
+        }
+
+        /* Narrow screen */
+        @media all and (max-width: 50em)
+        {
+          body { margin: 1em; }
+          #navigation { float: none; position: static; margin-left: auto; margin-right: auto; }
+          #main nav a { display: block; }
+        } 
     </style>
 </head>
 <body>
 
-<div id="left_hand">
+<h1>Submitting Tests</h1>
 
-<p>Tutorial</p>
+<section id="navigation">
+
+    <h4>Tutorial</h4>
     <nav>
-    <a href="index.html">Overview</a>   
-    <a href="Need.html">What You'll Need</a>
-    <a href="WhichAndHowMany.html">Which Tests to Write</a>
-    <a href="Writing.html">Writing Tests</a>
-    <a href="ExampleTest_Auto.html">-- JavaScript example</a>
-    <a href="ExampleTest_RefTest.html">-- RefTest example</a>
-    <a href="ExampleTest_Manual.html">-- Manual example</a>
-    <a href="Submitting.html">Submitting Tests</a>
-    <a href="ThenWhat.html">Then What?  Test Review Process</a>
+    <ul>
+    <li><a href="index.html">Overview</a></li>   
+    <li><a href="Need.html">What You'll Need</a></li>
+    <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
+    <li><a href="Writing.html">Writing Tests</a>
+     <ul>
+       <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
+       <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
+       <li><a href="ExampleTest_Manual.html">Manual example</a></li>
+     </ul>
+    </li>
+    <li><a href="Submitting.html">Submitting Tests</a></li>
+    <li><a href="ThenWhat.html">Test Review Process</a></li>
+    </ul>
     </nav>
-<hr>
-<p>Test Templates</p>
-    <a href="templates/template-auto.html" target="_blank">JavaScript test</a>
-    <a href="templates/template-reftest-001.html" target="_blank">RefTest, part one</a>
-    <a href="templates/template-reftest-001-ref.html" target="_blank">RefTest, part two</a>
-    <a href="templates/template-MANUAL.html" target="_blank">Manual test</a>
 
-</div>
+   <h4>Test Templates</h4>
+   <ul>
+    <li><a href="templates/template-auto.html">JavaScript test</a></li>
+    <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
+    <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
+    <li><a href="templates/template-MANUAL.html">Manual test</a></li>
+   </ul>
+</section>
 
-<div id="main_content">
-
-    <h1>Submitting Tests</h1>
+<div id="main">
 
     <h2>First, Check Your Tests</h2>
 
@@ -52,7 +73,7 @@
 
     <p>Use as many browsers as possible to check your results before submitting your tests.  This helps you to catch use cases that may not have been obvious on one browser, and it also might give you a “heads-up” to pass along to the spec editors about how the real world behaves in comparison to their expectations.</p>  
 
-    <span class="todo"><p>If you do come across such a “heads up” situation, <a href="index.html#spec_bugs" target="_blank">file a bug on that spec</a> to let the editor know.</p></span>
+    <p>If you do come across such a “heads up” situation, <a href="index.html#spec_bugs">file a bug on that spec</a> to let the editor know.</p>
 
     <h2>Submit a New Batch of Tests</h2>
 
@@ -65,11 +86,11 @@
 	        <p>then, update your fork by typing <kbd>git push &lt;your_forkname&gt; master</kbd></p>
         </li>
         <li>create a branch for your submission:  <kbd>git checkout -b &lt;your_branchname&gt;</kbd>  <em>(Note:  your branchname is a combination of three things:  <b>“submission/”</b> + <b>your name</b> + “-” + <b>test type</b>.  For example, if James Bond wrote some tests about links, he would create the branch <b>submission/jamesbond-links</b>.)</em></li>
-        <li>add your tests into the testsuite structure <em>(You can just copy and paste your test files from your own testing area into the right directories within the testsuite repository.  If you are not sure which is the “right directory”, <a href="https://github.com/w3c/html-testsuite/tree/master/tools/scripts/id2path.json" target="_blank">this file</a> provides a mapping from the spec section's ID attribute to that section's place in the repository's directory structure.)</em></li>
+        <li>add your tests into the testsuite structure <em>(You can just copy and paste your test files from your own testing area into the right directories within the testsuite repository.  If you are not sure which is the “right directory”, <a href="https://github.com/w3c/html-testsuite/tree/master/tools/scripts/id2path.json">this file</a> provides a mapping from the spec section's ID attribute to that section's place in the repository's directory structure.)</em></li>
         <li>type <kbd>git add .</kbd> to add all the files.</li>
         <li>type <kbd>git commit</kbd> to commit the files <em>(first line of message is a simple imperative, next paragraph can go into more detail)</em></li>
         <li>push the tests to your remote:  type <kbd>git push &lt;your_forkname&gt; &lt;your_branchname&gt;</li>
-        <li>up on GitHub, in your forked repository, initiate a <a href="https://help.github.com/articles/using-pull-requests" target="_blank">pull request</a> on that new branch.</li>
+        <li>up on GitHub, in your forked repository, initiate a <a href="https://help.github.com/articles/using-pull-requests">pull request</a> on that new branch.</li>
         <li>You're done for now!  Now you await comments and see if the tests get approved.  :-)</li>
     </ol>
 

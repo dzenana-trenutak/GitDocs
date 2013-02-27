@@ -5,44 +5,68 @@
     <title>What's Up with Testing</title>
     <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
     <style>
-        #left_hand {width: 225px; float: left; position: fixed; background-color: silver;}
-        #left_hand a {display: block; padding-bottom: 10px;}
+        body {margin: 1em 1em 2em 16em; font-family: sans-serif; }
 
-        #main_content {margin: 0 0 0 230px;}
-        .todo, highlight_me {background-color: yellow;}
-        li {margin: 5px 5px 5px 5px;}
-        #main_content nav a {padding-right: 20px;}
+        #navigation { float: left; width: 13em; margin: 0 0 0 -15em; position: fixed; padding: 0.5em;
+                      background-color: #aaa; border-radius: 0.5em; }
+        #navigation ul { list-style-type: none; padding-left: 0.5em; }
+        #navigation ul ul li:before { content: "- "; }
 
+        #main { max-width: 60em; }
+        .highlight_me {background-color: yellow;}
+        #main nav { margin-top: 3em; text-align: center; }
+        #main nav a { padding-right: 3em; }
+
+        /* wide screen */
+        @media all and (min-width: 90em)
+        {
+          body {margin: 4em 4em 4em 20em; }
+        }
+
+        /* Narrow screen */
+        @media all and (max-width: 50em)
+        {
+          body { margin: 1em; }
+          #navigation { float: none; position: static; margin-left: auto; margin-right: auto; }
+          #main nav a { display: block; }
+        } 
     </style>
 </head>
 <body>
 
-<div id="left_hand">
+<h1>Example Test: RefTest</h1>
 
-<p>Tutorial</p>
+
+<section id="navigation">
+
+    <h4>Tutorial</h4>
     <nav>
-    <a href="index.html">Overview</a>   
-    <a href="Need.html">What You'll Need</a>
-    <a href="WhichAndHowMany.html">Which Tests to Write</a>
-    <a href="Writing.html">Writing Tests</a>
-    <a href="ExampleTest_Auto.html">-- JavaScript example</a>
-    <a href="ExampleTest_RefTest.html">-- RefTest example</a>
-    <a href="ExampleTest_Manual.html">-- Manual example</a>
-    <a href="Submitting.html">Submitting Tests</a>
-    <a href="ThenWhat.html">Then What?  Test Review Process</a>
+    <ul>
+    <li><a href="index.html">Overview</a></li>   
+    <li><a href="Need.html">What You'll Need</a></li>
+    <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
+    <li><a href="Writing.html">Writing Tests</a>
+     <ul>
+       <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
+       <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
+       <li><a href="ExampleTest_Manual.html">Manual example</a></li>
+     </ul>
+    </li>
+    <li><a href="Submitting.html">Submitting Tests</a></li>
+    <li><a href="ThenWhat.html">Test Review Process</a></li>
+    </ul>
     </nav>
-<hr>
-<p>Test Templates</p>
-    <a href="templates/template-auto.html" target="_blank">JavaScript test</a>
-    <a href="templates/template-reftest-001.html" target="_blank">RefTest, part one</a>
-    <a href="templates/template-reftest-001-ref.html" target="_blank">RefTest, part two</a>
-    <a href="templates/template-MANUAL.html" target="_blank">Manual test</a>
 
-</div>
+   <h4>Test Templates</h4>
+   <ul>
+    <li><a href="templates/template-auto.html">JavaScript test</a></li>
+    <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
+    <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
+    <li><a href="templates/template-MANUAL.html">Manual test</a></li>
+   </ul>
+</section>
 
-<div id="main_content">
-
-    <h1>Example Test: RefTest</h1>
+<div id="main">
 
     <h2>A RefTest</h2>
 
@@ -53,18 +77,17 @@
         <li>Does a newline in a pre element separate paragraphs for the purposes of the Unicode bidirectional algorithm?</li>
         <li>What is the ordinal value of an ordered list's <code>li</code> element if its value attribute is not explicitly set?</li>
         <li>Does the "type" attribute of an ordered list's <code>li</code> element really change the numbering system used to label that <code>li</code> element?</li>
-        <li class="todo">What else? Something really CSSy?</li>
     </ul>
 
     <p>However, even if JavaScript isn't able to judge the test result, it is <b>still possible</b> to automate the test <b>IF</b> you are able to replicate the expected result exactly, using a different approach than the technology being tested.</p>
 
     <p>Then, if the two pages render identically within a reftest testing harness, the test is marked as "pass".</p>
 
-    <p>More complicated reftests are possible as well, such as when multiple pages need all to match each other, or when a page can match any of a number or alternatives. or when two pages should definitely NOT match.  W3C's CSS Working Group has great experience with all the nuances of reftests, and I will leave the explanation of those more complicated reftests to <a href="http://wiki.csswg.org/test/format#reference-links" target="_blank">them</a>.</p>
+    <p>More complicated reftests are possible as well, such as when multiple pages need all to match each other, or when a page can match any of a number or alternatives. or when two pages should definitely NOT match.  W3C's CSS Working Group has great experience with all the nuances of reftests, and I will leave the explanation of those more complicated reftests to <a href="http://wiki.csswg.org/test/format#reference-links">them</a>.</p>
 
     <p>Here, we will demonstrate a simple example.  Let's take the first question from the list above: Does a right-to-left rendering of "SAW" within a <code>BDO</code> element really display as "WAS"?</p>
 
-    <p>Remember, you can get the needed templates for this kind of test <a href="templates/template-reftest-001.html" target="_blank">here</a> and <a href="templates/template-reftest-001-ref.html" target="_blank">here</a>. When you name the file, just add the section information ahead of the "reftest" string in the filename.  Increment the 001 number as needed, depending on how many reftests you need to make to test this particular piece of the technology.</p>
+    <p>Remember, you can get the needed templates for this kind of test <a href="templates/template-reftest-001.html">here</a> and <a href="templates/template-reftest-001-ref.html">here</a>. When you name the file, just add the section information ahead of the "reftest" string in the filename.  Increment the 001 number as needed, depending on how many reftests you need to make to test this particular piece of the technology.</p>
 
     <h3>The Test File</h3>
 
