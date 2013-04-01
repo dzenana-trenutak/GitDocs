@@ -64,7 +64,7 @@
    dl.domintro dt, dl.domintro dt * { color: black; text-decoration: none; }
    dl.domintro dd { margin: 0.5em 0 1em 2em; padding: 0; }
    dl.domintro dd p { margin: 0.5em 0; }
-   dl.domintro:before { display: table; margin: -1em -0.5em -0.5em auto; width: auto; content: 'This box is non-normative. Implementation requirements are given below this box.'; color: black; font-style: italic; border: solid 2px; background: white; padding: 0 0.25em; }
+   dl.domintro:before { display: table; margin: -1em -0.5em -0.5em auto; width: auto; content: 'This box is non-normative. Implementation requirements are given below this box.'; color: black; font-style: italic; border: solid 2px; background: white; padding: 0 0.25em; text-decoration: line-through; }
 
 
    h2 { page-break-before: always; }
@@ -158,6 +158,7 @@
     <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
     <li><a href="Writing.html">Writing Tests</a>
      <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
        <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
        <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
        <li><a href="ExampleTest_Manual.html">Manual example</a></li>
@@ -170,6 +171,7 @@
 
    <h4>Test Templates</h4>
    <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
     <li><a href="templates/template-auto.html">JavaScript test</a></li>
     <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
     <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
@@ -264,14 +266,7 @@
 
     <ol>
         <li><p>If the <code><a href="#datatransfer">DataTransfer</a></code> object is no longer associated with a <a href="#drag-data-store">drag data store</a>, abort these steps. Nothing happens.</li>
-        <li><p>If the <a href="#drag-data-store">drag data store</a>'s <a href="#drag-data-store-mode" title="drag data store mode">mode</a> is not the <a href="#concept-dnd-rw" title="concept-dnd-rw">read/write mode</a>, abort these steps. Nothing happens.</li>
-        <li><p>If the method was called with no arguments, remove each item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i>, and abort these steps.</li>
-        <li><p>Let <var title="">format</var> be the first argument, <a href="infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</li>
-        <li>
-            <p>If <var title="">format</var> equals "<code title="">text</code>", change it to "<code title="">text/plain</code>".</p>
-            <p>If <var title="">format</var> equals "<code title="">url</code>", change it to "<code title="">text/uri-list</code>".</p>
-       </li>
-       <li><p>Remove the item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i> and whose <a href="#the-drag-data-item-type-string" title="the drag data item type string">type string</a> is equal to <var title="">format</var>, if there is one.</li>
+        <li><p>If the <a href="#drag-data-store">drag data store</a>'s <a href="#drag-data-store-mode" title="drag data store mode">mode</a> is not the <a href="#concept-dnd-rw" title="concept-dnd-rw">read/write mode</a>, ....</li>
     </ol>
 
     <del>
@@ -286,13 +281,9 @@
             </tr>
             <tr>
                 <td>
-                    <p>If present, look at the gray definition box</p>
-                    <p>Note any and all element-specific content attributes</p>
-		            <p>Note the DOM interface information, such as
-			            <ul>
-                            <li>the prototype for the element</li>
-			                <li>the DOM properties and methods of the element</li>
-                        </ul>
+                    <p>If a gray IDL definition box is present, you will need to run WebIDL tests.</p>
+                    <p>WebIDL tests have their own existing JavaScript harness, their own <a href="templates/template-webIDL.html">template</a>, and stay in a separate file from any other tests you create for the section.</p>
+                    <p>Read <a href="ExampleTest_WebIDL.html">this</a> to find out more about writing and running WebIDL tests.</p>
                 </td>
 <td>
 
@@ -314,78 +305,47 @@
 
 </td>
 <td>
-    <p>DOM Properties to Test</p>
-    <ul><code>
-        <li>dropEffect</li>
-        <li>effectAllowed</li>
-        <li>items</li>
-        <li>types</li>        
-        <li>files</li>
-    </code></ul>
-    <p>DOM Methods to Test</p>
-    <ul><code>
-        <li>setDragImage</li>
-        <li>getData</li>
-        <li>setData</li>
-        <li>clearData</li>
-    </code></ul>
-
+    <p>Place the text within this WebIDL definition box within the <p><code>&lt;pre id='idl'&gt;</code> element</p> that you'll find inside <a href="templates/template-webIDL.html">this template</a>.</p> 
+    <p>Follow the directions provided <a href="ExampleTest_WebIDL.html">here</a> to finish creating this separate test file.</p>
 </td>
             </tr>
             <tr>
                 <td><b>Another Example</b>
-                    <p>Note that "Categories", "Context, and "Content Model" sections are mostly for authors, not user agents, as user agents need to accept everything and somehow make it work.</p>
+                    <p>The <code>article</code> element does not have a WebIDL box as part of its definition, but it does list a lot of other information.</p>
+                    <p>"Categories", "Context, and "Content Model" sections are mostly for authors, not user agents, as user agents need to accept everything and somehow make it work.</p>
                     <p>However, sometimes these sections do mention a quality that user agents should implement, such as in the case of "Sectioning root" and other "section" related terms.  The concept of sectioning, if implemented, would involve a user-agent algorithm, the implementation of which would then need to be tested.</p> 
-                    <p>So, drill down into every term you see, to make sure to catch everything required of a user agent within this definition box.</p>                   
+                    <p>So, drill down into every term you see, to make sure to catch everything required of a user agent.</p>
+                    <p>This also includes writing your own JavaScript test for the DOM interface specified here, as there is no WebIDL version to test separately.</p>                   
                 </td>
 
 <td>
-  <h4 id="the-ol-element"><span class="secno">4.5.5 </span>The <dfn><code>ol</code></dfn> element</h4>
+  <h4 id="the-article-element"><span class="secno">4.4.2 </span>The <dfn><code>article</code></dfn> element</h4>
 
   <dl class="element"><dt><a href="dom.html#element-dfn-categories" title="element-dfn-categories">Categories</a>:</dt>
    <dd><a href="dom.html#flow-content-1">Flow content</a>.</dd>
-   <dd>If the element's children include at least one <code><a href="#the-li-element">li</a></code> element: <a href="dom.html#palpable-content-0">Palpable content</a>.</dd>
+   <dd><a href="dom.html#sectioning-content-0">Sectioning content</a>.</dd>
+   <dd><a href="dom.html#palpable-content-0">Palpable content</a>.</dd>
    <dt><a href="dom.html#element-dfn-contexts" title="element-dfn-contexts">Contexts in which this element can be used</a>:</dt>
    <dd>Where <a href="dom.html#flow-content-1">flow content</a> is expected.</dd>
    <dt><a href="dom.html#element-dfn-content-model" title="element-dfn-content-model">Content model</a>:</dt>
-   <dd>Zero or more <code><a href="#the-li-element">li</a></code> elements.</dd>
+   <dd><a href="dom.html#flow-content-1">Flow content</a>.</dd>
    <dt><a href="dom.html#element-dfn-attributes" title="element-dfn-attributes">Content attributes</a>:</dt>
    <dd><a href="dom.html#global-attributes">Global attributes</a></dd>
-   <dd><code title="attr-ol-reversed"><a href="#attr-ol-reversed">reversed</a></code></dd>
-   <dd><code title="attr-ol-start"><a href="#attr-ol-start">start</a></code></dd>
-   <dd><code title="attr-ol-type"><a href="#attr-ol-type">type</a></code></dd>
    <dt><a href="dom.html#element-dfn-dom" title="element-dfn-dom">DOM interface</a>:</dt><!--TOPIC:DOM APIs-->
-   <dd>
-<pre class="idl">interface <dfn id="htmlolistelement">HTMLOListElement</dfn> : <a href="dom.html#htmlelement">HTMLElement</a> {
-           attribute boolean <a href="#dom-ol-reversed" title="dom-ol-reversed">reversed</a>;
-           attribute long <a href="#dom-ol-start" title="dom-ol-start">start</a>;
-           attribute DOMString <a href="#dom-ol-type" title="dom-ol-type">type</a>;
-};</pre>
-   </dd>
+   <dd>Uses <code><a href="dom.html#htmlelement">HTMLElement</a></code>.</dd>
   </dl>
 </td>
 
                 <td>
-                    <p>Content Attributes to Test</p>
-                        <ul><code>
-                            <li>reversed</li>
-                            <li>start</li>
-                            <li>type</li>
-                        </code></ul>                            
                     <p>DOM Prototype to Test</p>
                         <ul>
                             <code><li>HTMLOListElement</li></code>
                         </ul> 
-                    <p>DOM Properties to Test</p>
-                        <ul><code>
-                            <li>reversed</li>
-                            <li>start</li>
-                            <li>type</li>
-                        </code></ul> 
+                    <p>Is there an implementation that can be tested for the expected sectioning behavior?</p>
                 </td>
             </tr>
         	<tr>
-                <td>
+                <td><b>Back to the DataTransfer Example</b>
                     <p>Note every normative statement that targets <strong>user agents</strong> (aka consumers) – <strong>not authors</strong> (aka producers).</p>
                     <p>Normative statements include the words "must", "must not", "required", "should", "should not", and "recommended." (RFC 2119 language)</p>
                     <p>Here, each normative statement has been highlighted.</p>
@@ -400,14 +360,7 @@
 
     <ol>
         <li><p>If the <code><a href="#datatransfer">DataTransfer</a></code> object is no longer associated with a <a href="#drag-data-store">drag data store</a>, abort these steps. Nothing happens.</li>
-        <li><p>If the <a href="#drag-data-store">drag data store</a>'s <a href="#drag-data-store-mode" title="drag data store mode">mode</a> is not the <a href="#concept-dnd-rw" title="concept-dnd-rw">read/write mode</a>, abort these steps. Nothing happens.</li>
-        <li><p>If the method was called with no arguments, remove each item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i>, and abort these steps.</li>
-        <li><p>Let <var title="">format</var> be the first argument, <a href="infrastructure.html#converted-to-ascii-lowercase">converted to ASCII lowercase</a>.</li>
-        <li>
-            <p>If <var title="">format</var> equals "<code title="">text</code>", change it to "<code title="">text/plain</code>".</p>
-            <p>If <var title="">format</var> equals "<code title="">url</code>", change it to "<code title="">text/uri-list</code>".</p>
-       </li>
-       <li><p>Remove the item in the <a href="#drag-data-store-item-list">drag data store item list</a> whose <a href="#the-drag-data-item-kind" title="the drag data item kind">kind</a> is <i>Plain Unicode string</i> and whose <a href="#the-drag-data-item-type-string" title="the drag data item type string">type string</a> is equal to <var title="">format</var>, if there is one.</li>
+        <li><p>If the <a href="#drag-data-store">drag data store</a>'s <a href="#drag-data-store-mode" title="drag data store mode">mode</a> is not the <a href="#concept-dnd-rw" title="concept-dnd-rw">read/write mode</a>, ....</li>
     </ol>
     
 </td>
@@ -441,13 +394,13 @@
 
             </tr>
             <tr>
-                <td><b>Another example</b>
-                    <p>This part of the spec does not use much RFC 2119 language, but it is full of testable statements.</p>
-                    <p>Note that
+                <td><b>Another example (looking at the <code>ol</code> element for a moment)</b>
+                    <p>Sometimes the spec does not use much RFC 2119 language but is still full of testable statements.</p>
+                    <p>For this section, note that
                         <ul>
-                            <li>Crossed out text indicates a normative statement aimed at <strong>authors</strong>.</li>
-                            <li>Highlighted and bold text indicates a normative statement aimed at <strong>user agents</strong>.</li>
-                            <li>Highlighted text alone indicates a candidate requirement for user agents.</li>
+                            <li><del>Crossed out text</del> indicates a normative statement aimed at <strong>authors</strong>.</li>
+                            <li><span class="highlight_me"><b>Highlighted and bold</b></span> text indicates a normative statement aimed at <strong>user agents</strong>.</li>
+                            <li><span class="highlight_me">Highlighted</span> text alone indicates a candidate requirement for <strong>user agents</strong>.</li>
                         </ul>
                     </p>
                     <p>Also note that some of these statements will require digging further into the spec to catch all the necessary tests you should write:

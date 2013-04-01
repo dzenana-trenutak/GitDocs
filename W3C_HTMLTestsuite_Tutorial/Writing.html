@@ -47,6 +47,7 @@
     <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
     <li><a href="Writing.html">Writing Tests</a>
      <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
        <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
        <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
        <li><a href="ExampleTest_Manual.html">Manual example</a></li>
@@ -59,6 +60,7 @@
 
    <h4>Test Templates</h4>
    <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
     <li><a href="templates/template-auto.html">JavaScript test</a></li>
     <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
     <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
@@ -68,17 +70,23 @@
 
 <div id="main">
 
-    <p>There are three approaches to writing a test.  The following links provide <a href="templates/index.html">templates</a> for each approach.</p>
+    <p>There are four different kinds of tests that comprise the testsuite.  The following links provide <a href="templates/index.html">templates</a> for each approach.</p>
 
+    <ul>
+        <li><b><a href="templates/template-webIDL.html">WebIDL</a></b> definitions, as contained within specs that need to be tested, have a predefined, constrained, automated test format.</li>
+    </ul>  
+
+    <p>For the rest of the spec content:</p>
+  
     <ul>
         <li>The best approach is to create <b>fully automated <a href="templates/template-auto.html">JavaScript tests</a></b> to verify each assertion.  These rely upon the <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">testharness.js</a></kbd> capabilities.</li>
         <li><b>Reftests</b> visually compare <em>two</em> renderings, <a href="templates/template-reftest-001.html">the first</a> using the technology under test and <a href="templates/template-reftest-001-ref.html">the other</a> replicating the intended outcome using other, dependable methods. Reftests can also be fully automated, but only given a certain amount of infrastructure.  Because of that hurdle, this approach is less desirable than the purely JavaScripted first approach.</li>
         <li><b><a href="templates/template-MANUAL.html">Manual tests</a></b> are the last resort, when a human absolutely must be involved in order to run and/or determine the outcome of the test.</li>
     </ul>
 
-    <p>Save each testfile template into some local directory other than that of the <kbd>html-testsuite</kbd> repository.  It will make it easier for you to run and check all your tests before submission if they are not scattered among different subdirectories, and you should always keep a copy of your tests apart from the repository space anyway, just in case.</p>
+    <p>Save each testfile template into some local directory other than that of your <kbd>web-platform-tests</kbd> repository.  It will make it easier for you to run and check all your tests before submission if they are not scattered among different subdirectories, and you should always keep a copy of your tests apart from the repository space anyway, just in case.</p>
 
-    <p>Make sure that you have your <kbd>resources</kbd> folder containing the <code>testharness.js</code> and <code>testharness-report.js</code> files within this same directory.</p>
+    <p>Make sure that, within this same directory, you have your <kbd>resources</kbd> folder containing the <code>testharness.js</code>, <code>testharness-report.js</code>, <code>idlharness.js</code> and <code>webidl2.js</code> files.</p>
 
     <h2>Tutorials</h2>
 
@@ -107,9 +115,11 @@
         <li>and more is in the <a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">source code</a> itself.</li>
     </ul>
 
-    <h3>More resources may be found at</h3>
+    <h3>More resources are to be found at</h3>
 
     <ul>
+        <li><a href="http://www.w3.org/wiki/Testing/Resource_Center_TF">W3C's Testing Task Force Wiki</a></li>
+        <li><a href="http://www.w3.org/wiki/Testing/Resource_Center_TF/Existing_Documentation">The above Wiki's amazingly thorough documentation list</a></li>
         <li><a href="http://testthewebforward.org/">Test the Web Forward</a></li>
     </ul>
 
@@ -134,11 +144,11 @@
 	    <li><span class="todo">What else?</span></li>
     </ul>
 
-    <h2>Let's Go Through <a href="ExampleTest_Auto.html">Some Examples</a>...</h2>
+    <h2>Let's Go Through <a href="ExampleTest_WebIDL.html">Some Examples</a>...</h2>
 
     <nav>
         <a href="index.html">Back to Overview</a>
-        <a href="ExampleTest_Auto.html">Example Tests</a>
+        <a href="ExampleTest_WebIDL.html">Example Tests</a>
     </nav> 
 
 </div>

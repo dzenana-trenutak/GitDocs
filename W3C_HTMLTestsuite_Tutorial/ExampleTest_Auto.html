@@ -33,8 +33,7 @@
 </head>
 <body>
 
-<h1>Example Tests: JavaScript</h1>
-
+<h1>Example Test: JavaScript</h1>
 
 <section id="navigation">
 
@@ -46,6 +45,7 @@
     <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
     <li><a href="Writing.html">Writing Tests</a>
      <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
        <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
        <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
        <li><a href="ExampleTest_Manual.html">Manual example</a></li>
@@ -58,6 +58,7 @@
 
    <h4>Test Templates</h4>
    <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
     <li><a href="templates/template-auto.html">JavaScript test</a></li>
     <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
     <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
@@ -69,17 +70,13 @@
 
     <h2>An Automated Test</h2>
 
-    <p>Let's start with a very small subset of those assertions about the <code>OL</code> element that we found back on the <a href="WhichAndHowMany.html">Which Tests to Write</a> page.</p>
+    <p>For this example, let's use just one assertion about the <code>OL</code> element that we found back on the <a href="WhichAndHowMany.html">Which Tests to Write</a> page.</p>
 
     <p>Remember, you can get a template for this kind of test <a href="templates/template-auto.html">here</a>.</p>
 
     <p>Regarding the <code>OL</code> element:</p>
     <ul>
-        <li>DOM Prototype to Test:  <code>HTMLOListElement</code></li>
-        <li>Content Attribute to Test:  <code>reversed</code></li>
-        <li>DOM Property to Test:  <code>reversed</code></li>
         <li>The <code>reversed</code> IDL attribute must reflect the <code>reversed</code> content attribute.</li>
-
     </ul>
 
     <p>In this case, let's first create some markup to provide some data with which the tests can work.</p>
@@ -103,22 +100,11 @@
 </pre>
 
         <p>Then, we use some JavaScript code to translate each assertion into a test that can pass or fail, depending upon how well the technology has been implemented by the user agent.</p>
+
 <pre>
         "use strict";
 
         var testList;
-
-        // check that prototype matches spec's DOM interface
-        test(function () {
-            testList = document.getElementById("basic");
-            assert_equals(Object.getPrototypeOf(testList), HTMLOListElement.prototype, "HTMLOListElement.prototype should be used for OL");
-        }, "The prototype for OL is HTMLOListElement.prototype");
-
-        // check that "own" property reversed is present
-        test(function () {
-            testList = document.getElementById("basic");
-            assert_own_property(testList, "reversed");
-        }, "'reversed' property should be defined on OL.");
 
         // The reversed IDL attribute must reflect the reversed content attribute.
 
@@ -138,16 +124,14 @@
             assert_false(document.getElementById("justRev").reversed, "Changing IDL 'reversed' property changes list's reversed property.");
         }, "Changing IDL 'reversed' property changes list's reversed property.");
 
-
-
 </pre>
 
         <p>The tests needed to test these assertions are pretty simple.  Still, by assembling a whole battery of such tests, we can thoroughly and automatically test that the technology described in the spec has been implemented according to the spec.<p>
         <p>Make sure that each test has a clean environment in which to run.  Sometimes, you will need to break your tests up across files so that, for instance, content markup won't affect your DOM properties and vice-versa.</p>
         <p>You may also need to break up test files by sub-type when a particular section simply contains a huge number of necessary tests.  For instance, just one attribute on an element may deserve its own (or several) test files, depending on how complicated its behavior can be.</p>
         <p>Remember, within each file, put as much code within the "test();" wrappers as you can, so that errors can be properly contained.  The overall test file should never fail, causing fewer-than-expected tests to run.  Only individual tests should perform operations that may lead to failure.  The overall sum of <b>failures plus successes</b> needs to be a constant.</p>
-        <p>This concern is also the reason that you'll see some assignment statements repeated above, so that they are specific to each test, just in case a prior test failed.</p>
-        <p>And - Don't put anything into your test file that doesn't absolutely have to be there!  You don't want to risk affecting the test.</p>
+        <p>In case a prior test fails, repeat assignment statements within each test so that they are specific to each test.</p>
+        <p>And - don't put anything into your test file that doesn't absolutely have to be there!  You don't want to risk affecting the test.</p>
      
         <h2>What About a <a href="ExampleTest_RefTest.html">RefTest</a>?</h2>   
 

@@ -46,6 +46,7 @@
     <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
     <li><a href="Writing.html">Writing Tests</a>
      <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
        <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
        <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
        <li><a href="ExampleTest_Manual.html">Manual example</a></li>
@@ -58,6 +59,7 @@
 
    <h4>Test Templates</h4>
    <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
     <li><a href="templates/template-auto.html">JavaScript test</a></li>
     <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
     <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
@@ -112,24 +114,28 @@
         <p>Then, get the testsuite:
             <ul>
                 <li>in your local terminal, <kbd>cd</kbd> into the directory in which you want to put the <kbd>html-testsuite</kbd> structure</li>
-	            <li>type <kbd>git clone git@github.com:w3c/html-testsuite.git</kbd></li>
+	            <li>type <kbd>git clone git@github.com:w3c/web-platform-tests.git</kbd></li>
             </ul>
         </p>
 
         <p>Go ahead and fork it, so that you'll be ready to submit tests:</p>
 	        <ul>
-                <li>up in GitHub, on the <a href="https://github.com/w3c/html-testsuite">source page</a>, choose <b>fork</b>, choose <b>SSH</b>, and copy the URL.</li>  
+                <li>up in GitHub, on the <a href="https://github.com/w3c/web-platform-tests">source page</a>, choose <b>fork</b>, choose <b>SSH</b>, and copy the URL.</li>  
 	            <li>back in your local terminal, type <kbd>git add remote &lt;your_forkname&gt; &lt;URL&gt;</kbd></li>
             </ul>
         </p>
 
         <h2 id="js">Some JavaScript Files</h2>
 
-        <p>Thanks to James Graham, there is a great API to help you write robust tests and automatically assemble the pass/fail results. Please:
+        <p>Thanks to James Graham, there is a great API to help you write robust tests and automatically assemble the pass/fail results. Please download these files from their own GitHub repositories:</p>
         <ul>
-            <li>download the <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">testharness.js</a></kbd> and <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharnessreport.js">testharness-report.js</a></kbd> files from their own GitHub repository.</li>
-            <li>save these files into a <kbd>resources</kbd> folder within whichever local directory you will use for writing your own tests</li>
-        </ul>
+            <li><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js"><kbd>testharness.js</kbd></a></li>
+            <li><a href="https://github.com/w3c/testharness.js/blob/master/testharnessreport.js"><kbd>testharness-report.js</kbd></a></li>
+            <li><a href="https://github.com/w3c/testharness.js/blob/master/idlharness.js"><kbd>idlharness.js</kbd></a></li>
+            <li><a href="https://github.com/darobin/webidl2.js/blob/develop/lib/webidl2.js"><kbd>webidl2.js</kbd></a></li>
+        </ul>    
+        <p>Save these files into a <kbd>resources</kbd> folder within whichever local directory you will use for writing your own tests</li>
+
 
 <nav>
     <a href="index.html">Back to Overview</a>
