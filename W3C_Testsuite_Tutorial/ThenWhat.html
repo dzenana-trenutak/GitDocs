@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>What's Up with Testing</title>
+    <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
+    <style>
+        body {margin: 1em 1em 2em 16em; font-family: sans-serif; }
+
+        #navigation { float: left; width: 13em; margin: 0 0 0 -15em; position: fixed; padding: 0.5em;
+                      background-color: #aaa; border-radius: 0.5em; }
+        #navigation ul { list-style-type: none; padding-left: 0.5em; }
+        #navigation ul ul li:before { content: "- "; }
+
+        #main { max-width: 60em; }
+        #main nav { margin-top: 3em; text-align: center; }
+        #main nav a { padding-right: 3em; }
+
+        /* wide screen */
+        @media all and (min-width: 90em)
+        {
+          body {margin: 4em 4em 4em 20em; }
+        }
+
+        /* Narrow screen */
+        @media all and (max-width: 50em)
+        {
+          body { margin: 1em; }
+          #navigation { float: none; position: static; margin-left: auto; margin-right: auto; }
+          #main nav a { display: block; }
+        } 
+    </style>
+</head>
+<body>
+
+<h1>Test Review Process</h1>
+
+
+<section id="navigation">
+
+    <h4>Tutorial</h4>
+    <nav>
+    <ul>
+    <li><a href="index.html">Overview</a></li>   
+    <li><a href="Need.html">What You'll Need</a></li>
+    <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
+    <li><a href="Writing.html">Writing Tests</a>
+     <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
+       <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
+       <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
+       <li><a href="ExampleTest_Manual.html">Manual example</a></li>
+     </ul>
+    </li>
+    <li><a href="Submitting.html">Submitting Tests</a></li>
+    <li><a href="ThenWhat.html">Test Review Process</a></li>
+    </ul>
+    </nav>
+
+   <h4>Test Templates</h4>
+   <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
+    <li><a href="templates/template-auto.html">JavaScript test</a></li>
+    <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
+    <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
+    <li><a href="templates/template-MANUAL.html">Manual test</a></li>
+   </ul>
+</section>
+
+<div id="main">
+
+    <p>When a pull request is created, your tests are now pending approval.</p>
+    <p>Various members of the W3C Testing Task Force will attempt to find the time to do a code review.</p>  
+    <p>By default, your tests will not be edited by anyone else. You will be the one who needs to address any comments or questions that are raised before the tests are approved.</p>
+    <p>Once the Task Force is satisfied with the quality of the tests, your pull request branch will be merged into the W3C repository master and/or CR branch(es). This means that they were approved!</p>
+    <p>This review is currently a rather slow and ad-hoc process, but the more tests submitted, the more efficient this part will have to get!</p>
+
+    <h2>More Reading</h2>
+
+    <p>Some pre-GitHub review process information</p>
+
+    <p><a href="http://www.w3.org/html/wg/wiki/Testing/Approval/">W3C's HTML Working Group's Wiki, review process specific</a></p>
+
+    <br>
+    <p>Pre- and post-GitHub review process ideas are to be found within this list</p>
+
+    <p><a href="http://www.w3.org/wiki/Testing/Resource_Center_TF/Existing_Documentation">W3C's Testing Resource Center Documentation List</a></p>
+    
+    <br>
+    <p>and, discussion has happened from time-to-time on</p>
+    <p><a href="http://lists.w3.org/Archives/Public/public-html-testsuite/">http://lists.w3.org/Archives/Public/public-html-testsuite/</a></p>
+    <p><a href="http://lists.w3.org/Archives/Public/public-test-infra/">http://lists.w3.org/Archives/Public/public-test-infra/</a></p>
+
+    <nav>
+        <a href="index.html">Back to Overview</a>
+    </nav> 
+
+</div>
+</body>
+</html>

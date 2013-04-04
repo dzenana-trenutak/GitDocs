@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>What's Up with Testing</title>
+    <link rel="author" title="dzenana" href="mailto:dzenana.trenutak@gmail.com">
+    <style>
+        body {margin: 1em 1em 2em 16em; font-family: sans-serif; }
+
+        #navigation { float: left; width: 13em; margin: 0 0 0 -15em; position: fixed; padding: 0.5em;
+                      background-color: #aaa; border-radius: 0.5em; }
+        #navigation ul { list-style-type: none; padding-left: 0.5em; }
+        #navigation ul ul li:before { content: "- "; }
+
+        #main { max-width: 60em; }
+        .todo {background-color: yellow;}
+        #main nav { margin-top: 3em; text-align: center; }
+        #main nav a { padding-right: 3em; }
+
+        /* wide screen */
+        @media all and (min-width: 90em)
+        {
+          body {margin: 4em 4em 4em 20em; }
+        }
+
+        /* Narrow screen */
+        @media all and (max-width: 50em)
+        {
+          body { margin: 1em; }
+          #navigation { float: none; position: static; margin-left: auto; margin-right: auto; }
+          #main nav a { display: block; }
+        } 
+    </style>
+</head>
+<body>
+
+<h1>Writing Tests</h1>
+
+
+<section id="navigation">
+
+    <h4>Tutorial</h4>
+    <nav>
+    <ul>
+    <li><a href="index.html">Overview</a></li>   
+    <li><a href="Need.html">What You'll Need</a></li>
+    <li><a href="WhichAndHowMany.html">Which Tests to Write</a></li>
+    <li><a href="Writing.html">Writing Tests</a>
+     <ul>
+       <li><a href="ExampleTest_WebIDL.html">WebIDL example</a></li>
+       <li><a href="ExampleTest_Auto.html">JavaScript example</a></li>
+       <li><a href="ExampleTest_RefTest.html">RefTest example</a></li>
+       <li><a href="ExampleTest_Manual.html">Manual example</a></li>
+     </ul>
+    </li>
+    <li><a href="Submitting.html">Submitting Tests</a></li>
+    <li><a href="ThenWhat.html">Test Review Process</a></li>
+    </ul>
+    </nav>
+
+   <h4>Test Templates</h4>
+   <ul>
+    <li><a href="templates/template-webIDL.html">WebIDL test</a></li>
+    <li><a href="templates/template-auto.html">JavaScript test</a></li>
+    <li><a href="templates/template-reftest-001.html">RefTest, first half</a></li>
+    <li><a href="templates/template-reftest-001-ref.html">RefTest, second half</a></li>
+    <li><a href="templates/template-MANUAL.html">Manual test</a></li>
+   </ul>
+</section>
+
+<div id="main">
+
+    <p>There are four different kinds of tests that comprise the testsuite.  The following links provide <a href="templates/index.html">templates</a> for each approach.</p>
+
+    <ul>
+        <li><b><a href="templates/template-webIDL.html">WebIDL</a></b> definitions, as contained within specs that need to be tested, have a predefined, constrained, automated test format.</li>
+    </ul>  
+
+    <p>For the rest of the spec content:</p>
+  
+    <ul>
+        <li>The best approach is to create <b>fully automated <a href="templates/template-auto.html">JavaScript tests</a></b> to verify each assertion.  These rely upon the <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">testharness.js</a></kbd> capabilities.</li>
+        <li><b>Reftests</b> visually compare <em>two</em> renderings, <a href="templates/template-reftest-001.html">the first</a> using the technology under test and <a href="templates/template-reftest-001-ref.html">the other</a> replicating the intended outcome using other, dependable methods. Reftests can also be fully automated, but only given a certain amount of infrastructure.  Because of that hurdle, this approach is less desirable than the purely JavaScripted first approach.</li>
+        <li><b><a href="templates/template-MANUAL.html">Manual tests</a></b> are the last resort, when a human absolutely must be involved in order to run and/or determine the outcome of the test.</li>
+    </ul>
+
+    <p>Save each testfile template into some local directory other than that of your <kbd>web-platform-tests</kbd> repository.  It will make it easier for you to run and check all your tests before submission if they are not scattered among different subdirectories, and you should always keep a copy of your tests apart from the repository space anyway, just in case.</p>
+
+    <p>Make sure that, within this same directory, you have your <kbd>resources</kbd> folder containing the <code>testharness.js</code>, <code>testharness-report.js</code>, <code>idlharness.js</code> and <code>webidl2.js</code> files.</p>
+
+    <h2>Tutorials</h2>
+
+    <p>These provide guidance about test writing (and generally date from before the tests were hosted on GitHub, but they can still serve as good tutorials for getting started)</p>
+
+    <h3>General</h3>
+
+    <ul>
+        <li><a href="http://w3c.github.com/testing-how-to/#(1)">http://w3c.github.com/testing-how-to/#(1)</a></li>
+        <li><a href="http://www.w3.org/html/wg/wiki/Testing/Authoring/">http://www.w3.org/html/wg/wiki/Testing/Authoring/</a></li>
+        <li><a href="http://www.w3.org/MarkUp/Test/HTML401/current/htmltestdocumentation.html#testsuiteformat">http://www.w3.org/MarkUp/Test/HTML401/current/htmltestdocumentation.html#testsuiteformat</a></li>
+    </ul>
+
+    <h3>Reftests</h3>
+
+    <ul>
+        <li><a href="http://wiki.csswg.org/test/reftest">http://wiki.csswg.org/test/reftest</a></li>
+        <li><a href="http://wiki.csswg.org/test/format">http://wiki.csswg.org/test/format</a></li>
+    </ul>
+
+    <h3>Testharness.js</h3>
+
+    <ul>
+        <li><a href="http://darobin.github.com/test-harness-tutorial/docs/using-testharness.html">using-testharness.js by Robin Berjon</a></li>
+        <li><a href="http://documentup.com/paulirish/testharness.js">http://documentup.com/paulirish/testharness.js</a></li>
+        <li>and more is in the <a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">source code</a> itself.</li>
+    </ul>
+
+    <h3>More resources are to be found at</h3>
+
+    <ul>
+        <li><a href="http://www.w3.org/wiki/Testing/Resource_Center_TF">W3C's Testing Task Force Wiki</a></li>
+        <li><a href="http://www.w3.org/wiki/Testing/Resource_Center_TF/Existing_Documentation">The above Wiki's amazingly thorough documentation list</a></li>
+        <li><a href="http://testthewebforward.org/">Test the Web Forward</a></li>
+    </ul>
+
+    <h2>More Tips</h2>
+
+    <p>Make sure that each file always runs the same number of tests, no matter what any of the test results may be.</p>
+    <p>Put as much code within the <code>test(function ()....);</code> pieces provided by the <kbd><a href="https://github.com/w3c/testharness.js/blob/master/testharness.js">testharness.js</a></kbd> code – like that, if a test fails for any reason, it will fail gracefully and not impact any of the other tests that may be in the same file.</p>
+    <p>Don't worry about global variables.<p>
+    <p>On the other hand, "use strict" and use 4 spaces to indent - don't use tabs.
+    <p>When you write tests, you can rely on the following levels of technology within your tests:</p>
+    <ul>
+	    <li><a href="http://www.w3.org/TR/#tr_DOM">DOM level 4 (keep to features also specified by DOM level 3)</a></li>
+	    <li><a href="http://www.w3.org/TR/#tr_CSS">CSS level 2.1</a></li>
+    	<li><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%205th%20edition%20December%202009.pdf">ECMAScript level 5</a></li>
+    </ul>
+
+    <p>Some other useful resources you can use to create your tests are:<p>
+    <ul>
+        <li>Sample <a href="http://lists.w3.org/Archives/Public/public-test-infra/2012OctDec/0022.html">domain names and ports</a></li>
+	    <li>Available <a href="http://w3c.github.com/testing-how-to/#(29)">Web Socket servers</a></li>
+	    <li>Sample <a href="http://w3c.github.com/testing-how-to/#(30)">Audio and video materials</a></li>
+	    <li><span class="todo">What else?</span></li>
+    </ul>
+
+    <h2>Let's Go Through <a href="ExampleTest_WebIDL.html">Some Examples</a>...</h2>
+
+    <nav>
+        <a href="index.html">Back to Overview</a>
+        <a href="ExampleTest_WebIDL.html">Example Tests</a>
+    </nav> 
+
+</div>
+</body>
+</html>
